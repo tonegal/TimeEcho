@@ -14,11 +14,10 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             string inmsg = turnContext.Activity.Text;
-            System.TimeSpan msgLocalTimespan = turnContext.Activity.LocalTimestamp.Value.Offset;
             var replyText = $"Echo: {inmsg}";
             if (inmsg.Contains("idő") || inmsg.Contains("time"))
             {
-                replyText += $"\n\nCurrent time is: {System.DateTime.UtcNow.Add(msgLocalTimespan).ToString()}";
+                replyText += $"\n\nCurrent time is: {System.DateTime.Now.ToString()}";
             }
             await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
         }
