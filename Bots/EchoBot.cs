@@ -15,6 +15,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
             string inmsg = turnContext.Activity.Text;
             System.TimeSpan msgLocalTimespan = new System.TimeSpan();
+            msgLocalTimespan = turnContext.Activity.LocalTimestamp.Value.Offset;
             var replyText = $"Echo: {inmsg}";
             if (inmsg.Contains("idő") || inmsg.Contains("time"))
             {
