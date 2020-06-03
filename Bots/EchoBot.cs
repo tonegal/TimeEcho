@@ -14,6 +14,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
             string inmsg = turnContext.Activity.Text;
+            System.TimeSpan msgLocalTimespan = new System.TimeSpan();
             var replyText = $"Echo: {inmsg}";
             if (inmsg.Contains("idő") || inmsg.Contains("time"))
             {
