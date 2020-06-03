@@ -17,7 +17,7 @@ namespace Microsoft.BotBuilderSamples.Bots
             var replyText = $"Echo: {inmsg}";
             if (inmsg.Contains("idő") || inmsg.Contains("time"))
             {
-                replyText += $"\n\nCurrent time is: {System.DateTime.Now.ToString()}";
+                replyText += $"\n\nCurrent time is: {System.DateTime.UtcNow.ToString()}";
             }
             await turnContext.SendActivityAsync(MessageFactory.Text(replyText, replyText), cancellationToken);
         }
