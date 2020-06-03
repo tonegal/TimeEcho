@@ -15,8 +15,9 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
             string inmsg = turnContext.Activity.Text;
             System.TimeSpan msgLocalTimespan = new System.TimeSpan();
-            msgLocalTimespan = turnContext.Activity.LocalTimestamp.Value.Offset;
-            var replyText = $"Echo: {inmsg}";
+            string nulltext = turnContext.Activity.LocalTimestamp == null ? "null timezone" : "not null timezone";
+
+            var replyText = $"Echo: {inmsg}, Timezone: {nulltext}";
             if (inmsg.Contains("idő") || inmsg.Contains("time"))
             {
                 replyText += $"\n\nCurrent time is: {System.DateTime.UtcNow.ToString()}";
